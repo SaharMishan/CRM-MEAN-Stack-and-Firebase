@@ -1,0 +1,32 @@
+<h1><i class="fa-solid fa-user"></i> Contacts</h1>
+<br>
+<div>
+    <input type="text" placeholder="Search by name" [(ngModel)]="name">
+    <button class="btn-success"><i class="fa-solid fa-magnifying-glass"></i></button>
+</div>
+<div *ngIf="contacts | contactPipe:'name':name as contacts">
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Birthday</th>
+                <th scope="col">Phone</th>
+            </tr>
+        </thead>
+        <tbody *ngIf="contacts.length > 0 else noContact">
+            <tr *ngFor="let contact of contacts; index as i ">
+                <th scope="row">{{1+i}}</th>
+                <td>{{contact.name}}</td>
+                <td>{{contact.email}}</td>
+                <td>{{contact.birthday}}</td>
+                <td>{{contact.phones}}</td>
+            </tr>
+        </tbody>
+        <ng-template #noContact>
+            <p>No Contacs On The List!</p>
+        </ng-template>
+    </table>
+</div>

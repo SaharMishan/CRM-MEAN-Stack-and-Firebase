@@ -1,0 +1,20 @@
+<nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+        <h2>CRM <i class="fa-solid fa-people-roof"></i> Experts </h2>
+        <div ngbDropdown class="d-inline-block">
+            <button type="button" class="btn btn-success" id="dropdownBasic1" ngbDropdownToggle>
+                Welcome {{username}}
+            </button>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                <button ngbDropdownItem>
+                    <i class="fa fa-cog" style="margin-right: 0.5rem" aria-hidden="true" aria-disabled="true"></i>My
+                    Preferences
+                </button>
+
+                <button ngbDropdownItem (click)="logOut()">
+                    <i class="fa fa-sign-out" style="margin-right: 0.5rem" aria-hidden="true"></i>LogOut
+                </button>
+            </div>
+        </div>
+    </div>
+</nav>

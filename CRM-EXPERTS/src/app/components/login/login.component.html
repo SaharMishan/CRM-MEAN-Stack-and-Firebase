@@ -1,0 +1,45 @@
+<form #loginForm="ngForm" (ngSubmit)="submitLogin()">
+    <div class="container">
+        <h1 class="text-center mt-5">CRM <i class="fa-solid fa-people-roof"></i> Experts</h1>
+        <br><br>
+        <div class="form-floating mb-3 w-25 mx-auto">
+            <input type="email" class="form-control" [ngClass]="{
+            'is-invalid': email.invalid && email.touched,
+            'is-valid': email.touched && email.valid
+          }" id="floatingInput" placeholder="Enter your email address" name="email" [(ngModel)]="user.email"
+                #email="ngModel" required>
+            <div id="emailHelp" class="form-text">
+                <small class="text-danger" *ngIf="email.invalid && (email.dirty || email.touched)">Invalid Email</small>
+            </div>
+            <label for="floatingInput">Email address</label>
+        </div>
+        <div class="form-floating w-25 mx-auto">
+            <input type="password" class="form-control" [ngClass]="{
+            'is-invalid': password.invalid && email.touched,
+            'is-valid': password.touched && email.valid
+          }" id="floatingPassword" placeholder="Password" name="password" [(ngModel)]="user.password"
+                #password="ngModel" required>
+            <label for="floatingPassword">Password</label>
+            <div id="emailHelp" class="form-text">
+                <small class="text-danger" *ngIf="password.invalid && (password.dirty || password.touched)">Invalid
+                    Password</small>
+            </div>
+        </div>
+        <br>
+        <div class="loginBtn text-center">
+            <button type="submit" [disabled]="loginForm.invalid" class="btn btn-success w-25">Login</button>
+        </div>
+        <br>
+        <div class="loginWithGoogleBtn text-center">
+            <button type="submit" class="btn btn-primary w-25" (click)="loginWithGoogle()"><i
+                    class="fa-brands fa-google-plus-g google"></i> Login With Google</button>
+        </div>
+
+        <br>
+        <div class="text-center mx-auto">
+            <button routerLink="/register" class="btn btn-success w-25">New user? Regitser here</button>
+        </div>
+    </div>
+</form>
+<br><br><br>
+<p class="text-center">&copy; Copyrights made by Sahar Mishan</p>

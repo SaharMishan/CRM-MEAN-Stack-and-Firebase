@@ -1,0 +1,17 @@
+.ng-valid[required] {
+    border-color: rgb(62, 182, 62);
+    border-left: 2px solid rgb(17, 233, 17);
+}
+
+.ng-invalid[required]:not(form) {
+    border-color: rgb(140, 37, 37);
+    border-left: 2px solid red;
+}
+
+i {
+    color: rgb(51, 134, 51)
+}
+
+.google {
+    color: white;
+}

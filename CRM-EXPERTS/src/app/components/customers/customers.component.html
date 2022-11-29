@@ -1,0 +1,51 @@
+<h1><i class="fa-solid fa-user"></i> Customers</h1>
+<br>
+<div class="d-flex">
+    <div class="me-5">
+        <input type="text" placeholder="First Name" [(ngModel)]="firstName">
+        <button class=" btn-success"><i class="fa-solid fa-magnifying-glass"></i></button>
+    </div>
+    <div class="me-5">
+        <input type="text" placeholder="Last Name" [(ngModel)]="lastName">
+        <button class="btn-success"><i class=" fa-solid fa-magnifying-glass"></i></button>
+    </div>
+    <div class="me-5">
+        <input type="text" placeholder="Phone" [(ngModel)]="phone">
+        <button class="btn-success"><i class=" fa-solid fa-magnifying-glass"></i></button>
+    </div>
+    <div>
+        <button class="addCustomer btn btn-success" (click)="addCustomer()">Add Customer</button>
+    </div>
+</div>
+<br>
+<div
+    *ngIf="customers | customerPipe:'firstName':firstName | customerPipe:'lastName':lastName | customerPipe:'phone':phone as customers">
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Email</th>
+            </tr>
+        </thead>
+        <tbody *ngIf="customers.length > 0 else noCustomers">
+            <tr *ngFor="let customer of customers; index as i ">
+                <th scope="row">{{1+i}} &nbsp;&nbsp;<i class="fa-solid fa-eye"
+                        (click)="customerCard(customer)"></i>&nbsp; <i class="fa fa-pencil edit" aria-hidden="true"
+                        (click)="updateCustomer(customer)"></i>&nbsp; &nbsp;<i class="fa fa-trash delete"
+                        aria-hidden="true" (click)="deleteCustomer(customer)"></i> </th>
+                <td>{{customer.firstName}}</td>
+                <td>{{customer.lastName}}</td>
+                <td>{{customer.phone}}</td>
+                <td>{{customer.email}}</td>
+
+            </tr>
+        </tbody>
+        <ng-template #noCustomers>
+            <p>No Customers On The List!</p>
+        </ng-template>
+    </table>
+</div>

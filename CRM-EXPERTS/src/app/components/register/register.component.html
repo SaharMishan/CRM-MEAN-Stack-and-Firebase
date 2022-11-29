@@ -1,0 +1,32 @@
+<form #registerForm="ngForm" (ngSubmit)="register()">
+    <h1 class="text-center mt-5">CRM Experts Regestration <i class="fa-solid fa-people-roof logo"></i></h1>
+    <br><br>
+    <div class="form-floating mb-3 w-25 mx-auto">
+        <input type="email" class="form-control" [ngClass]="{
+            'is-invalid': email.invalid && email.touched,
+            'is-valid': email.touched && email.valid
+          }" id="floatingInput" placeholder="Enter your email address" name="email" [(ngModel)]="user.email"
+            #email="ngModel" required>
+        <div id="emailHelp" class="form-text">
+            <small class="text-danger" *ngIf="email.invalid && (email.dirty || email.touched)">Invalid Email</small>
+        </div>
+        <label for="floatingInput">Email address</label>
+    </div>
+    <div class="form-floating w-25 mx-auto">
+        <input type="password" class="form-control" [ngClass]="{
+            'is-invalid': password.invalid && email.touched,
+            'is-valid': password.touched && email.valid
+          }" id="floatingPassword" placeholder="Password" name="password" [(ngModel)]="user.password"
+            #password="ngModel" required>
+        <label for="floatingPassword">Password</label>
+        <div id="emailHelp" class="form-text">
+            <small class="text-danger" *ngIf="password.invalid && (password.dirty || password.touched)">Invalid
+                Password</small>
+        </div>
+    </div>
+    <br>
+    <div class="registerBtn text-center">
+        <button type="submit" [disabled]="registerForm.invalid" class="btn btn-success w-25">Register</button>
+        <br><br>
+        <button class="btn btn-success w-25" routerLink="/login">Back</button>
+    </div>
